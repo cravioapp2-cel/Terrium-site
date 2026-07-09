@@ -7,109 +7,107 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
+  body { background: #FFFFFF; }
+
+  .stripe-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .white-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.55);
+    z-index: 1;
+  }
+
   #entrance {
     height: 100vh;
-    background: linear-gradient(180deg, #FAC775 0%, #F0997B 50%, #D85A30 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #entrance .content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 0 20px;
   }
   #entrance h1 {
     font-size: 42px;
-    color: #4A1B0C;
-    font-weight: 600;
-    margin-bottom: 20px;
+    color: #111111;
+    font-weight: 700;
+    margin-bottom: 16px;
   }
   #entrance p {
     font-size: 16px;
-    color: #4A1B0C;
+    color: #4A2A1F;
+    font-weight: 500;
     margin-bottom: 30px;
   }
   #enterBtn {
-    background: #4A1B0C;
-    color: #FAECE7;
+    background: #111111;
+    color: #FFFFFF;
     border: none;
-    padding: 14px 32px;
+    padding: 14px 34px;
     border-radius: 999px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s;
   }
-  #enterBtn:hover { transform: scale(1.05); }
-
-  .leaf {
-    position: absolute;
-    animation: floaty 3.5s ease-in-out infinite;
-    opacity: 0.85;
-  }
-  @keyframes floaty {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
-  }
+  #enterBtn:hover { opacity: 0.85; }
 
   #home {
     display: none;
     min-height: 100vh;
-    background: linear-gradient(180deg, #C0DD97 0%, #97C459 45%, #639922 100%);
+    position: relative;
+    overflow: hidden;
   }
-  header {
+  #home header {
+    position: relative;
+    z-index: 3;
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 60px 20px 20px;
   }
-  header h1 {
-    color: #173404;
+  #home header h1 {
+    color: #111111;
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 700;
   }
-  header p {
-    color: #27500A;
+  #home header p {
+    color: #4A2A1F;
     margin-top: 8px;
-    font-size: 16px;
-  }
-
-  .hero-image {
-    width: 100%;
-    max-width: 800px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 16px;
-    margin: 20px auto;
-    display: block;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    font-size: 15px;
+    font-weight: 500;
   }
 
   .category-grid {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 30px 20px 60px;
+    padding: 20px 20px 340px;
     max-width: 1000px;
     margin: 0 auto;
   }
   .category-card {
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.94);
     border-radius: 16px;
     padding: 20px;
     width: 260px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    opacity: 0;
-    animation: fadeSlide 0.6s ease-out forwards;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     cursor: pointer;
     transition: transform 0.2s;
   }
   .category-card:hover { transform: translateY(-6px); }
-  .category-card:nth-child(1) { animation-delay: 0.1s; }
-  .category-card:nth-child(2) { animation-delay: 0.4s; }
-  .category-card:nth-child(3) { animation-delay: 0.7s; }
-
   .category-card img {
     width: 100%;
     height: 150px;
@@ -118,24 +116,21 @@
     margin-bottom: 12px;
   }
   .category-card h3 {
-    color: #173404;
+    color: #111111;
     font-size: 18px;
     margin-bottom: 6px;
   }
   .category-card p {
-    color: #3B6D11;
+    color: #4A2A1F;
     font-size: 13px;
   }
 
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   footer {
+    position: relative;
+    z-index: 3;
     text-align: center;
     padding: 20px;
-    color: #173404;
+    color: #111111;
     font-size: 13px;
   }
 </style>
@@ -143,22 +138,58 @@
 <body>
 
   <div id="entrance" onclick="enterSite()">
-    <svg class="leaf" style="left:10%; top:15%; width:70px;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#3B6D11" transform="rotate(-20 30 30)"/></svg>
-    <svg class="leaf" style="right:12%; top:30%; width:50px; animation-delay:0.5s;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#639922" transform="rotate(35 30 30)"/></svg>
-    <svg class="leaf" style="left:20%; bottom:18%; width:55px; animation-delay:1s;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#27500A" transform="rotate(10 30 30)"/></svg>
+    <svg class="stripe-bg" viewBox="0 0 400 460" preserveAspectRatio="none">
+      <polygon points="0,0 90,0 40,460 -50,460" fill="#FFC700" opacity="0.9"/>
+      <polygon points="110,0 180,0 130,460 60,460" fill="#FF5C33" opacity="0.9"/>
+      <polygon points="200,0 260,0 210,460 150,460" fill="#FF3D8A" opacity="0.85"/>
+      <polygon points="280,0 340,0 290,460 230,460" fill="#FF8A00" opacity="0.9"/>
+      <polygon points="360,0 420,0 370,460 310,460" fill="#FFC700" opacity="0.7"/>
+    </svg>
+    <div class="white-overlay"></div>
 
-    <h1>Step Into the Garden Entrance</h1>
-    <p>Design the perfect home for your pet or plants</p>
-    <button id="enterBtn">Enter</button>
+    <svg style="position:absolute; bottom:0; left:0; width:100%; height:220px; z-index:2;" viewBox="0 0 400 220" preserveAspectRatio="none">
+      <ellipse cx="60" cy="210" rx="50" ry="10" fill="#111111"/>
+      <ellipse cx="200" cy="215" rx="70" ry="12" fill="#111111"/>
+      <ellipse cx="340" cy="208" rx="55" ry="10" fill="#111111"/>
+      <path d="M60,210 C60,170 30,160 20,110 C45,130 60,150 60,175 C60,150 75,130 100,110 C90,160 60,170 60,210 Z" fill="#111111"/>
+      <path d="M200,215 C200,160 165,145 150,80 C180,105 200,130 200,165 C200,130 220,105 250,80 C235,145 200,160 200,215 Z" fill="#111111"/>
+      <path d="M340,208 C340,175 315,165 305,130 C325,145 340,160 340,180 C340,160 355,145 375,130 C365,165 340,175 340,208 Z" fill="#111111"/>
+      <path d="M130,218 C130,195 118,185 112,165" stroke="#111111" stroke-width="5" fill="none"/>
+      <path d="M130,218 C130,192 142,182 138,160" stroke="#111111" stroke-width="5" fill="none"/>
+      <path d="M270,216 C270,190 258,178 254,155" stroke="#111111" stroke-width="5" fill="none"/>
+      <path d="M270,216 C270,188 282,176 278,150" stroke="#111111" stroke-width="5" fill="none"/>
+    </svg>
+
+    <div class="content">
+      <h1>Step Into the Garden</h1>
+      <p>Design the perfect home for your pet or plants</p>
+      <button id="enterBtn">Enter</button>
+    </div>
   </div>
 
   <div id="home">
+    <svg class="stripe-bg" viewBox="0 0 400 900" preserveAspectRatio="none">
+      <polygon points="0,0 90,0 40,900 -50,900" fill="#FFC700" opacity="0.9"/>
+      <polygon points="110,0 180,0 130,900 60,900" fill="#FF5C33" opacity="0.9"/>
+      <polygon points="200,0 260,0 210,900 150,900" fill="#FF3D8A" opacity="0.85"/>
+      <polygon points="280,0 340,0 290,900 230,900" fill="#FF8A00" opacity="0.9"/>
+      <polygon points="360,0 420,0 370,900 310,900" fill="#FFC700" opacity="0.7"/>
+    </svg>
+    <div class="white-overlay"></div>
+
+    <svg style="position:absolute; bottom:0; left:0; width:100%; height:320px; z-index:2;" viewBox="0 0 400 320" preserveAspectRatio="none">
+      <ellipse cx="60" cy="305" rx="55" ry="12" fill="#111111"/>
+      <ellipse cx="200" cy="312" rx="80" ry="14" fill="#111111"/>
+      <ellipse cx="340" cy="300" rx="60" ry="12" fill="#111111"/>
+      <path d="M60,305 C60,255 25,240 12,175 C42,200 60,225 60,255 C60,225 78,200 108,175 C95,240 60,255 60,305 Z" fill="#111111"/>
+      <path d="M200,312 C200,245 158,225 140,140 C176,172 200,205 200,248 C200,205 224,172 260,140 C242,225 200,245 200,312 Z" fill="#111111"/>
+      <path d="M340,300 C340,258 310,245 296,200 C320,218 340,238 340,262 C340,238 358,218 384,200 C370,245 340,258 340,300 Z" fill="#111111"/>
+    </svg>
+
     <header>
       <h1>Your Ecosystem, Built Right</h1>
       <p>Upload a photo of your tank and get a custom design, shopping list, and care guide</p>
     </header>
-
-    <img class="hero-image" src="PASTE-YOUR-HERO-IMAGE-URL-HERE" alt="A beautifully designed vivarium ecosystem">
 
     <div class="category-grid">
       <div class="category-card">
