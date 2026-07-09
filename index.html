@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Ecosystem, Built Right</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+  #entrance {
+    height: 100vh;
+    background: linear-gradient(180deg, #FAC775 0%, #F0997B 50%, #D85A30 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  #entrance h1 {
+    font-size: 42px;
+    color: #4A1B0C;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  #entrance p {
+    font-size: 16px;
+    color: #4A1B0C;
+    margin-bottom: 30px;
+  }
+  #enterBtn {
+    background: #4A1B0C;
+    color: #FAECE7;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  #enterBtn:hover { transform: scale(1.05); }
+
+  .leaf {
+    position: absolute;
+    animation: floaty 3.5s ease-in-out infinite;
+    opacity: 0.85;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  #home {
+    display: none;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #C0DD97 0%, #97C459 45%, #639922 100%);
+  }
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+  header h1 {
+    color: #173404;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  header p {
+    color: #27500A;
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .category-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0;
+    animation: fadeSlide 0.6s ease-out forwards;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .category-card:hover { transform: translateY(-6px); }
+  .category-card:nth-child(1) { animation-delay: 0.1s; }
+  .category-card:nth-child(2) { animation-delay: 0.4s; }
+  .category-card:nth-child(3) { animation-delay: 0.7s; }
+
+  .category-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .category-card h3 {
+    color: #173404;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .category-card p {
+    color: #3B6D11;
+    font-size: 13px;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #173404;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+  <div id="entrance" onclick="enterSite()">
+    <svg class="leaf" style="left:10%; top:15%; width:70px;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#3B6D11" transform="rotate(-20 30 30)"/></svg>
+    <svg class="leaf" style="right:12%; top:30%; width:50px; animation-delay:0.5s;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#639922" transform="rotate(35 30 30)"/></svg>
+    <svg class="leaf" style="left:20%; bottom:18%; width:55px; animation-delay:1s;" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="26" ry="14" fill="#27500A" transform="rotate(10 30 30)"/></svg>
+
+    <h1>Step Into the Garden Entrance</h1>
+    <p>Design the perfect home for your pet or plants</p>
+    <button id="enterBtn">Enter</button>
+  </div>
+
+  <div id="home">
+    <header>
+      <h1>Your Ecosystem, Built Right</h1>
+      <p>Upload a photo of your tank and get a custom design, shopping list, and care guide</p>
+    </header>
+
+    <img class="hero-image" src="PASTE-YOUR-HERO-IMAGE-URL-HERE" alt="A beautifully designed vivarium ecosystem">
+
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="PASTE-PET-TANK-IMAGE-URL-HERE" alt="Tank designed for a pet">
+        <h3>Tank for Pets</h3>
+        <p>Reptiles, amphibians, fish, and more</p>
+      </div>
+      <div class="category-card">
+        <img src="PASTE-PLANT-TANK-IMAGE-URL-HERE" alt="Tank designed for plants">
+        <h3>Tank for Plants</h3>
+        <p>Moss, ferns, and lush greenery</p>
+      </div>
+      <div class="category-card">
+        <img src="PASTE-BOTH-TANK-IMAGE-URL-HERE" alt="Tank designed for pets and plants together">
+        <h3>Tank for Both</h3>
+        <p>A living ecosystem for pets and plants</p>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Your Ecosystem. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('entrance').style.display = 'none';
+      document.getElementById('home').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
